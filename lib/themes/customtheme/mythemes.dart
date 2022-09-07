@@ -43,6 +43,7 @@ class MyTheme {
     ////////////////
     //appbar theme
     appBarTheme: AppBarTheme(
+      centerTitle: true,
       backgroundColor: LightColors.primary,
       elevation: 0,
       iconTheme: IconThemeData(
