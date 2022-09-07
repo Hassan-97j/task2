@@ -266,7 +266,9 @@ class DateSelectionView extends StatelessWidget {
               ),
               MyButton(
                 text: 'Continue',
-                press: () {},
+                press: () {
+                  Get.toNamed(PagesNames.chatscreen);
+                },
               )
             ],
           ),
