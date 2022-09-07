@@ -132,9 +132,12 @@ class ChatsView extends StatelessWidget {
                               ),
                               child: FittedBox(
                                 fit: BoxFit.contain,
-                                child: Text(Get.find<ChatsController>()
-                                    .mylist[index]
-                                    .text),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: Text(Get.find<ChatsController>()
+                                      .mylist[index]
+                                      .text),
+                                ),
                               ),
                             ),
                           ),
