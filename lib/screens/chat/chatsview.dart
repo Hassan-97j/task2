@@ -83,68 +83,68 @@ class ChatsView extends StatelessWidget {
         ),
         Expanded(
           // flex: 3,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(22)),
-            child: GetBuilder<ChatsController>(
-              init: ChatsController(),
-              initState: (_) {},
-              builder: (_) {
-                return ListView.builder(
-                  itemCount: Get.find<ChatsController>().mylist.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: getProportionateScreenWidth(12)),
-                        child: Align(
-                          alignment: Get.find<ChatsController>()
-                                      .mylist[index]
-                                      .sentbyme ==
-                                  true
-                              ? Alignment.centerLeft
-                              : Alignment.centerRight,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(
-                                getProportionateScreenWidth(12)),
-                            elevation: 6,
-                            shadowColor: Get.theme.colorScheme.surface,
-                            child: Container(
-                              width: SizeConfig.screenWidth * 0.45,
-                              height: getProportionateScreenHeight(40),
-                              decoration: BoxDecoration(
-                                color: Get.find<ChatsController>()
-                                            .mylist[index]
-                                            .sentbyme ==
-                                        true
-                                    ? Get.theme.colorScheme.onPrimary
-                                    : Get.theme.colorScheme.background,
+          child: Obx(
+            () => Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(22)),
+              child: Get.find<ChatsController>().isloading.value == false
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : ListView.builder(
+                      itemCount: Get.find<ChatsController>().mylist.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: getProportionateScreenWidth(12)),
+                            child: Align(
+                              alignment: Get.find<ChatsController>()
+                                          .mylist[index]
+                                          .sentbyme ==
+                                      true
+                                  ? Alignment.centerLeft
+                                  : Alignment.centerRight,
+                              child: Material(
                                 borderRadius: BorderRadius.circular(
                                     getProportionateScreenWidth(12)),
-                                border: Border.all(
-                                  color: Get.find<ChatsController>()
-                                              .mylist[index]
-                                              .sentbyme ==
-                                          true
-                                      ? Get.theme.colorScheme.onPrimary
-                                      : Get.theme.colorScheme.background,
-                                  width: 2,
+                                elevation: 6,
+                                shadowColor: Get.theme.colorScheme.surface,
+                                child: Container(
+                                  width: SizeConfig.screenWidth * 0.45,
+                                  height: getProportionateScreenHeight(40),
+                                  decoration: BoxDecoration(
+                                    color: Get.find<ChatsController>()
+                                                .mylist[index]
+                                                .sentbyme ==
+                                            true
+                                        ? Get.theme.colorScheme.onPrimary
+                                        : Get.theme.colorScheme.background,
+                                    borderRadius: BorderRadius.circular(
+                                        getProportionateScreenWidth(12)),
+                                    border: Border.all(
+                                      color: Get.find<ChatsController>()
+                                                  .mylist[index]
+                                                  .sentbyme ==
+                                              true
+                                          ? Get.theme.colorScheme.onPrimary
+                                          : Get.theme.colorScheme.background,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.contain,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(6.0),
+                                      child: Text(Get.find<ChatsController>()
+                                          .mylist[index]
+                                          .text),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              child: FittedBox(
-                                fit: BoxFit.contain,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(6.0),
-                                  child: Text(Get.find<ChatsController>()
-                                      .mylist[index]
-                                      .text),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ));
-                  },
-                );
-              },
+                            ));
+                      },
+                    ),
             ),
           ),
         ),

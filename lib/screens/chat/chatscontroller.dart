@@ -2,10 +2,13 @@ import 'package:get/get.dart';
 import 'package:task2/fakedata/messages.dart';
 
 class ChatsController extends GetxController {
-  List<Messages> mylist = [];
+  var isloading = false.obs;
+  List mylist = <Messages>[].obs;
   fetch() async {
-    await Future.delayed(const Duration(seconds: 3));
+    isloading.value = false;
+    await Future.delayed(const Duration(seconds: 2));
     mylist.assignAll(msglist);
+    isloading.value = true;
     update();
   }
 
