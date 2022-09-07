@@ -33,34 +33,34 @@ class PackagesView extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(14)),
-        child: GetBuilder<PackageController>(
-          init: PackageController(),
-          initState: (_) {},
-          builder: (_) {
-            return ListView.builder(
-              itemCount: Get.find<PackageController>().mylist.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: getProportionateScreenWidth(12)),
-                  child: PackageBox(
-                    asset: Get.find<PackageController>().mylist[index].image,
-                    description:
-                        Get.find<PackageController>().mylist[index].description,
-                    price: Get.find<PackageController>()
-                        .mylist[index]
-                        .price
-                        .toString(),
+      body: Obx(() => Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(14)),
+            child: Get.find<PackageController>().isloading.value == false
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : ListView.builder(
+                    itemCount: Get.find<PackageController>().mylist.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenWidth(12)),
+                        child: PackageBox(
+                          asset:
+                              Get.find<PackageController>().mylist[index].image,
+                          description: Get.find<PackageController>()
+                              .mylist[index]
+                              .description,
+                          price: Get.find<PackageController>()
+                              .mylist[index]
+                              .price
+                              .toString(),
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            );
-          },
-        ),
-      ),
+          )),
     );
   }
 }
