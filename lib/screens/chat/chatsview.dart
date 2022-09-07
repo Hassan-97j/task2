@@ -130,9 +130,12 @@ class ChatsView extends StatelessWidget {
                                   width: 2,
                                 ),
                               ),
-                              child: Text(Get.find<ChatsController>()
-                                  .mylist[index]
-                                  .text),
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: Text(Get.find<ChatsController>()
+                                    .mylist[index]
+                                    .text),
+                              ),
                             ),
                           ),
                         ));
